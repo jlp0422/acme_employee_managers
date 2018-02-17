@@ -20,30 +20,34 @@
 <div style="display: flex;flex-wrap: wrap">
 {% for employee in employees %}
   <div class="employee" style="margin: 20px 0px;width:33%">
-    <h6><strong>Email Provider: </strong>{{ employee.emailProvider }}</h6>
     <h6><strong>Employee Name: </strong>{{ employee.name }}</h6>
+    <h6><strong>Email Provider: </strong>{{ employee.emailProvider }}</h6>
     <h6><strong>Employee Email:</strong></h6>
-    <form action="/employees/{{employee.id}}" method="POST">
+
+    <form action="/employees/{{employee.id}}?_method=PUT" method="POST">
+
       <input type="text" name="email" value="{{employee.email}}" />
-    <h6><strong>Manager Email:</strong></h6>
+
+      <h6><strong>Manager Name:</strong> {{ employee.manager.name}}</h6>
+
       <select name="managerId">
         <option value="-1">None</option>
-        {% for employee in employees %}
-          <!-- needs to be employee.manager.email -->
-          <option value="{{employee.managerId}}">{{employee.id}}</option>
-        {% endfor %}
+        <!-- {% for employee in employees %} -->
+          <option
+          value="{{employee.id}}">{{employee.email}}</option>
+        <!-- {% endfor %} -->
       </select>
+
       <button>Update</button>
     </form>
-    <form action="/employees/{{employee.id}}?_method=DELETE" method="POST">
+
+    <form style="margin:20px 0px" action="/employees/{{employee.id}}?_method=DELETE" method="POST">
       <button>Delete</button>
     </form>
+
   </div>
   {% endfor %}
 </div>
 
-{% for employee in employees %}
-<!-- <p>?</p> -->
-{% endfor %}
 
 {% endblock %}

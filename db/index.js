@@ -15,18 +15,16 @@ const seed = () => {
   ])
   .then(([jeremy, mike, carolyn]) => {
     return Promise.all([
-      jeremy.setManager(mike),
+      jeremy.setManager(carolyn),
       mike.setManager(carolyn),
-      carolyn.setManager(jeremy)
+      carolyn.setManager(mike)
     ])
   })
   // .then(() => {
-  //   return Employee.findOne({ where: {
-  //     email: 'carolyn@aol.com'
-  //   }})
+  //   Employee.findById(2)
+  //     .then(emp => emp.findWorkers())
+  //     .then(emps => console.log(emps[0].get()))
   // })
-  // .then(emp => emp.findManager(emp.managerId))
-  // .then(emp => console.log(emp.get()))
 }
 
 module.exports = {

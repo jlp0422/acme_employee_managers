@@ -11,13 +11,13 @@
 <body>
   <div class="container">
     <h1>{{ title }}</h1>
-    <h3>We have XX employees and XX managers!</h3>
-    <ul class="nav nav-pills">
+    <h3>We have <span class="badge badge-success">{{employeeCount}}</span> employees and <span class="badge badge-success">{{managerCount}}</span> managers!</h3>
+    <ul style="margin:15px 0" class="nav nav-pills">
       <li class="nav-item">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/" class="nav-link {% if path === '/'%}active{%endif%}">Home</a>
       </li>
       <li class="nav-item">
-        <a href="/employees" class="nav-link">Employees</a>
+        <a href="/employees" class="nav-link {% if path === '/employees'%}active{%endif%}">Employees</a>
       </li>
     </ul>
     {% block content %}
