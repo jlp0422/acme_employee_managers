@@ -1,0 +1,22 @@
+{
+  "name": "acme_employee_managers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "PORT=3000 DATABASE_URL=postgres://localhost/acme_employee_manager_db nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bootstrap": "^4.0.0",
+    "express": "^4.16.2",
+    "method-override": "^2.3.10",
+    "nunjucks": "^3.0.1",
+    "pg": "^7.4.1",
+    "sequelize": "^4.33.4"
+  }
+}
