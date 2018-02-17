@@ -5,7 +5,11 @@ const { Sequelize } = conn;
 
 const Employee = conn.define('employee', {
   email: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
 }, {
   getterMethods: {

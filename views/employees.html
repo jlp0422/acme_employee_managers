@@ -2,47 +2,51 @@
 
 {% block content %}
 
-<h5>Create Employee</h5>
-<form action="/employees" method="POST">
-  <label>Employee Email</label>
-  <input type="text" name="email" />
-  <label>Employee Manager</label>
-  <select name="managerId">
-    <option value="-1">None</option>
-    {% for employee in employees %}
-      <!-- needs to be employee.manager.email -->
-      <option value="{{employee.id}}">{{employee.email}}</option>
-    {% endfor %}
-  </select>
-  <button>Create Employee</button>
-</form>
+<div style="background-color:#f0f3f8;padding:15px 10px;">
+  <h5>Create Employee</h5>
+  <form class="form-inline" action="/employees" method="POST">
+    <div class="form-group" style="margin-right:15px">
+      <label style="font-weight:bold;margin-right:5px">Employee Email</label>
+      <input class="form-control" type="text" name="email" placeholder="Valid email please"/>
+    </div>
+    <div class="form-group" style="margin-right:15px">
+      <label style="font-weight:bold;margin-right:5px">Employee Manager</label>
+      <select class="form-control" name="managerId">
+        <option value="-1">None</option>
+        {% for employee in employees %}
+          <!-- needs to be employee.manager.email -->
+          <option value="{{employee.id}}">{{employee.email}}</option>
+        {% endfor %}
+      </select>
+    </div>
+      <button class="btn btn-primary">Create Employee</button>
+  </form>
+</div>
 
 <div style="display: flex;flex-wrap: wrap">
 {% for employee in employees %}
-  <div class="employee" style="margin: 20px 0px;width:33%">
+  <div class="employee" style="margin:15 0px;width:33.33%;padding: 10px;">
     <h6><strong>Employee Name: </strong>{{ employee.name }}</h6>
     <h6><strong>Email Provider: </strong>{{ employee.emailProvider }}</h6>
     <h6><strong>Employee Email:</strong></h6>
 
     <form action="/employees/{{employee.id}}?_method=PUT" method="POST">
 
-      <input type="text" name="email" value="{{employee.email}}" />
-
+      <input class="form-control col-md-7" type="text" name="email" value="{{employee.email}}" />
+      <br>
       <h6><strong>Manager Name:</strong> {{ employee.manager.name}}</h6>
-
-      <select name="managerId">
+      <select class="form-control col-md-7" name="managerId">
         <option value="-1">None</option>
         <!-- {% for employee in employees %} -->
           <option
           value="{{employee.id}}">{{employee.email}}</option>
         <!-- {% endfor %} -->
       </select>
-
-      <button>Update</button>
+      <button style="margin:20px 0px 10px" class="btn btn-success">Update</button>
     </form>
 
-    <form style="margin:20px 0px" action="/employees/{{employee.id}}?_method=DELETE" method="POST">
-      <button>Delete</button>
+    <form style="margin:10px 0px" action="/employees/{{employee.id}}?_method=DELETE" method="POST">
+      <button class="btn btn-danger">Delete</button>
     </form>
 
   </div>

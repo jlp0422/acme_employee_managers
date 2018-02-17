@@ -60,17 +60,16 @@ app.post('/employees', (req, res, next) => {
     .catch(next)
 })
 
-// does not work when updating manager to 'none'
+// works 100%
 app.put('/employees/:id', (req, res, next) => {
-  Employee.findOne({
-    where: {id: req.params.id},
-    include: [ 'manager' ]
-  })
+  Employee.findById(req.params.id)
   .then(employee => {
     Object.assign(employee, req.body)
+    if (req.body.managerId === '-1') {
+      employee.managerId = null
+    }
     return employee.save()
   })
-  // .then(employee => res.send(employee))
   .then(() => res.redirect('/employees'))
   .catch(next)
 })
