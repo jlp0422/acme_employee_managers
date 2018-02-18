@@ -13,10 +13,10 @@
       <label style="font-weight:bold;margin-right:5px">Employee Manager</label>
       <select class="form-control" name="managerId">
         <option value="-1">None</option>
-        {% for employee in employees %}
           <!-- needs to be employee.manager.email -->
+          {% for employee in employees %}
           <option value="{{employee.id}}">{{employee.email}}</option>
-        {% endfor %}
+          {% endfor %}
       </select>
     </div>
       <button class="btn btn-primary">Create Employee</button>
@@ -37,10 +37,10 @@
       <h6><strong>Manager Name:</strong> {{ employee.manager.name}}</h6>
       <select class="form-control col-md-7" name="managerId">
         <option value="-1">None</option>
-        <!-- {% for employee in employees %} -->
-          <option
-          value="{{employee.id}}">{{employee.email}}</option>
-        <!-- {% endfor %} -->
+        {% for employee in employees %}
+
+          <option value="{{employee.id}}">{{employee.email}}</option>
+        {% endfor %}
       </select>
       <button style="margin:20px 0px 10px" class="btn btn-success">Update</button>
     </form>
@@ -52,6 +52,5 @@
   </div>
   {% endfor %}
 </div>
-
 
 {% endblock %}

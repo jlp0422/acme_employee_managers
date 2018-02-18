@@ -52,7 +52,22 @@ app.get('/employees', (req, res, next) => {
   .then((employees) => res.render('employees', { employees, title: 'Employees'}))
   .catch(next)
 })
-//
+
+// app.get('/employees', (req, res, next) => {
+//   Promise.all([
+//     Employee.findAll({
+//       include: [ 'manager' ]
+//     }),
+//     Employee.findAndCountAll({
+//       include: [ 'manager' ],
+//       distinct: true,
+//       col: 'managerId',
+//     })
+//   ])
+//   .then(([employees, managers]) => res.render('employees', {employees, managers, title: 'Employees'}))
+//   .catch(next)
+// })
+
 // works 100%
 app.post('/employees', (req, res, next) => {
   Employee.createFromForm(req.body)
