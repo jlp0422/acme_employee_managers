@@ -37,9 +37,8 @@
       <h6><strong>Manager Name:</strong> {{ employee.manager.name}}</h6>
       <select class="form-control col-md-7" name="managerId">
         <option value="-1">None</option>
-        {% for employee in employees %}
-
-          <option value="{{employee.id}}">{{employee.email}}</option>
+        {% for e in employees %}
+          <option {%if employee.managerId === e.id %}selected{%endif%} value="{{e.id}}">{{e.email}}</option>
         {% endfor %}
       </select>
       <button style="margin:20px 0px 10px" class="btn btn-success">Update</button>
