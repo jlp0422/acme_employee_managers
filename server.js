@@ -64,6 +64,7 @@ app.get('/employees', (req, res, next) => {
 //       col: 'managerId',
 //     })
 //   ])
+//     // .then(([employees, managers]) => res.send({employees, managers}))
 //   .then(([employees, managers]) => res.render('employees', {employees, managers, title: 'Employees'}))
 //   .catch(next)
 // })
