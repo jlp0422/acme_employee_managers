@@ -49,7 +49,7 @@
     </form>
 
     {% for emp in employees %}
-      {% if employee.id === emp.managerId %} {{employee.name}} manages <span class="badge badge-warning">{{emp.name}}</span> {% endif %}
+      {% if emp.managerId === employee.id %} {{ employee.name}} manages <span class="badge badge-warning">{{emp.name}}</span>{% endif %}
     {% endfor %}
 
   </div>
