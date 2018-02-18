@@ -35,11 +35,21 @@ Employee.prototype.findWorkers = function() {
   })
 }
 
+// Employee.findManagers = function() {
+//   return Employee.findAll({
+//     include: [ {
+//       model: Employee,
+//       as: 'workers'
+//     }]
+//   })
+// }
+
 Employee.createFromForm = function(body) {
   if (body.managerId === '-1') delete body.managerId;
   return this.create(body)
 }
 
 Employee.belongsTo(Employee, { as: 'manager'})
+Employee.hasMany(Employee, { as: 'workers', foreignKey: 'managerId'})
 
 module.exports = Employee

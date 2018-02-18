@@ -45,9 +45,16 @@ app.get('/', (req, res, next) => {
 
 // works 100%
 app.get('/employees', (req, res, next) => {
-  Employee.findAll({
-    include: [ 'manager' ]
-  })
+    Employee.findAll({
+      include: [ {
+        model: Employee,
+        as: 'manager'
+      }, {
+        model: Employee,
+        as: 'workers'
+      }]
+    // Employee
+    })
   // .then(employees => res.send(employees))
   .then((employees) => res.render('employees', { employees, title: 'Employees'}))
   .catch(next)

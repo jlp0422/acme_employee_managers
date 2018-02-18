@@ -48,8 +48,10 @@
       <button class="btn btn-danger">Delete</button>
     </form>
 
+    {% if employee.workers.length > 0 %} {{employee.name}} manages {%endif%}
+
     {% for emp in employees %}
-      {% if emp.managerId === employee.id %} {{ employee.name}} manages <span class="badge badge-warning">{{emp.name}}</span>{% endif %}
+      {% if emp.managerId === employee.id %}<span class="badge badge-warning">{{emp.name}}</span>{% endif %}
     {% endfor %}
 
   </div>
